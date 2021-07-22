@@ -26,8 +26,8 @@ const PlaceOrders = () => {
         localStorage.removeItem('country');
         localStorage.removeItem('totalBill');
         localStorage.removeItem('mycart');
-
-        history.push('/Books');
+        // setFlag(true);
+        history.push('/Home');
     };
 
     const placeOrder = () => {
@@ -51,7 +51,7 @@ const PlaceOrders = () => {
             address: localStorage.getItem('address'),
             city: localStorage.getItem('city'),
             country: localStorage.getItem('country'),
-            paymentMethod: localStorage.getItem('paymentMethod'),
+            paymentMethod: 'Cash',
             totalPrice: localStorage.getItem('totalBill'),
             isPaid: false
         };
@@ -69,7 +69,9 @@ const PlaceOrders = () => {
             localStorage.removeItem('country');
             localStorage.removeItem('totalBill');
             localStorage.removeItem('mycart');
-            history.push('/books');
+            alertify.success('Order Placed!');
+            // setFlag(true);
+            history.push('/Home');
             //   console.log(data);
           })
           .catch(err => alertify.error('Something went wrong! Please try again'));

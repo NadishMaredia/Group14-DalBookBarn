@@ -39,6 +39,8 @@ class Cart extends Component {
                 })
             }
             await this.setState({data: tmp, totalPay: sum})
+            localStorage.setItem('totalBill', sum)
+            localStorage.setItem('mycart', JSON.stringify(this.state.data))
         })
     }
 
