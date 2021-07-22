@@ -8,6 +8,7 @@ const bookController=require('../controllers/bookControllers')
 
 const orderController=require('../controllers/orderController')
 
+const bookOrderController=require('../controllers/bookOrderController')
 
 route.post('/signup', userController.signup)
 route.post('/login', userController.login)
@@ -30,6 +31,8 @@ route.get('/books/book/:id', bookController.getParticularBook);
 route.get('/order', orderController.find)
 route.put('/order/:id',orderController.find)
 route.put('/orderes/:id',orderController.update)
+
+route.post('/order/add', bookOrderController.addOrder);
 
 
 module.exports = route
