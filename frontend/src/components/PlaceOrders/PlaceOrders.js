@@ -84,7 +84,9 @@ const PlaceOrders = () => {
             <h1>Place Orders</h1>
             <Row>
                 <Col md={8}>
-                    <ListGroup variant='flush'>
+                    <ListGroup 
+                    variant='flush'
+                    style={{width:"90%",height:"100%", marginLeft:"30px" , boxShadow:"3px 3px 12px 3px"}}>
                         <ListGroup.Item>
                             <h2>Shipping</h2>
                             <p>
@@ -99,13 +101,29 @@ const PlaceOrders = () => {
                         </ListGroup.Item>
                         <ListGroup.Item>
                             <h2>OrderItem</h2>
+                            <Row >
+                                                    <Col md={3}>
+                                                      <h5>Title</h5> 
+                                                    </Col>
+                                                    <Col md={3}>
+                                                       <h5>Description</h5> 
+                                                    </Col>
+                                                    <Col md={3}>
+                                                    <h5> Quantity</h5> 
+                                                    </Col>
+                                                    <Col md={3}>
+                                                    <h5>Price</h5>
+                                                    </Col>
+                                                </Row>
                             {data.length === 0 ? <p>Cart is empty</p>
                             : (
                                 <ListGroup variant='flush'>
                                     {
+                                        
                                         data.map((item, index) => {
+                                            
                                             return <ListGroup.Item key={index}>
-                                                <Row>
+                                                <Row >
                                                     <Col md={3}>
                                                         {item.title}
                                                     </Col>
@@ -127,9 +145,10 @@ const PlaceOrders = () => {
                         </ListGroup.Item>
                     </ListGroup>
                 </Col>
-                <Col md={4}>
-                    <Card>
-                        <ListGroup variant='flush'>
+                <Col md={4} style={{marginTop:"100px", marginLeft:"-20px"}}>
+                    <Card style={{boxShadow:"3px 3px 12px 3px"}} >
+                        <ListGroup variant='flush' 
+                        >
                             <ListGroup.Item>
                                 <h2>Summary of order</h2>
                             </ListGroup.Item>
