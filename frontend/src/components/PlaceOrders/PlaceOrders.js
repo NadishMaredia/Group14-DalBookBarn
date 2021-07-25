@@ -20,14 +20,24 @@ const PlaceOrders = () => {
         // console.log(data);
     });
 
-    const clearCart = () => {
+    const clearCart = async () => {
         localStorage.removeItem('address');
         localStorage.removeItem('city');
         localStorage.removeItem('country');
         localStorage.removeItem('totalBill');
         localStorage.removeItem('mycart');
-        // setFlag(true);
-        history.push('/Home');
+
+        await fetch("http://localhost:4000/users/"+localStorage.getItem("email"))
+        .then((res)=>res.json())
+        .then(async (data)=>{
+            let user = data.user[0]
+            user.cart = [];
+            await axios.post("http://localhost:4000/users/addToCart", user)
+            .then((data1)=>{
+                console.log("Book removed successfully")
+                history.push('/Home');
+            })
+        })
     };
 
     const placeOrder = () => {
@@ -64,15 +74,7 @@ const PlaceOrders = () => {
           .then(res => {
               const data = res.data;
             
-            localStorage.removeItem('address');
-            localStorage.removeItem('city');
-            localStorage.removeItem('country');
-            localStorage.removeItem('totalBill');
-            localStorage.removeItem('mycart');
-            alertify.success('Order Placed!');
-            // setFlag(true);
-            history.push('/Home');
-            //   console.log(data);
+            clearCart()
           })
           .catch(err => alertify.error('Something went wrong! Please try again'));
         // console.log(objToBeSend);
@@ -84,7 +86,7 @@ const PlaceOrders = () => {
             <h1>Place Orders</h1>
             <Row>
                 <Col md={8}>
-                    <ListGroup 
+                <ListGroup 
                     variant='flush'
                     style={{width:"90%",height:"100%", marginLeft:"30px" , boxShadow:"3px 3px 12px 3px"}}>
                         <ListGroup.Item>
@@ -119,11 +121,9 @@ const PlaceOrders = () => {
                             : (
                                 <ListGroup variant='flush'>
                                     {
-                                        
                                         data.map((item, index) => {
-                                            
                                             return <ListGroup.Item key={index}>
-                                                <Row >
+                                                <Row>
                                                     <Col md={3}>
                                                         {item.title}
                                                     </Col>

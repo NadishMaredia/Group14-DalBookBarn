@@ -19,24 +19,32 @@ exports.addOrder = async (req, res) => {
 
         await order.save()
             .then(order => {
-                res.status(200).json({
+                res.send({
                     status: 'success',
                     message: 'Order has been placed',
                     orderId: order._id
                 });
             })
             .catch(err => {
-                res.status(400).json({
+                res.send({
                     status: 'failed',
                     message: err
                 })
             })
-
-        res.send('working');
     } catch (err) {
-        res.status(400).json({
-            status: 'failed',
-            message: err
-        });
+        console.log(err)
     }
 };
+
+exports.getOrder = (req, res, next) => {
+    Order.find((err, orderList) => {
+        if(err)
+        {
+            return console.error(err);
+        }
+        else
+        {
+            res.send({"orders": orderList})      
+        }
+    });
+}

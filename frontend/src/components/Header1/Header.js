@@ -58,6 +58,7 @@ class Header extends Component {
                    
                     <DropdownButton id="dropdown-basic-button" title={localStorage.getItem("username")} variant = "Secondary">
                         <Dropdown.Item href="/profile">Update Profile</Dropdown.Item>
+                        <Dropdown.Item href="/my_orders">My orders</Dropdown.Item>
                         <Dropdown.Item href="/orders">Orders</Dropdown.Item>
                         <Dropdown.Item href="/Admin">Add books</Dropdown.Item>
                         <Dropdown.Item href="/">Log out</Dropdown.Item>

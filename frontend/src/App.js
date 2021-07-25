@@ -14,7 +14,7 @@ import ProfileUpdate from './components/UpdateProfile/ProfileUpdate';
 import Order from './components/Orders/Orders';
 import Payment from './components/Payment/Payment';
 import PlaceOrders from './components/PlaceOrders/PlaceOrders';
-
+import MyPastOrders from './components/MyPastOrders/MyPastOrders';
 
 function App() {
 
@@ -29,11 +29,10 @@ function App() {
         <Route path="/Payment" component={Payment} />
         <Route path="/PlaceOrders" component={PlaceOrders} />
         <Route path= "/Books"><Books/></Route>
-            <Route path= "/Cart"><Cart/></Route>
-            <Route path= "/Checkout"><Checkout/></Route>
-            <Route path="/Home"><Home/></Route>
-            
-       
+        <Route path= "/Cart"><Cart/></Route>
+        <Route path= "/Checkout"><Checkout/></Route>
+        <Route path="/Home"><Home/></Route>
+        <Route path="/my_orders"><MyPastOrders/></Route>
       </Router>
 
     </div>

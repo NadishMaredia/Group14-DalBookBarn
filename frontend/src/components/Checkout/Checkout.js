@@ -38,20 +38,19 @@ const Checkout = () => {
             t = 1;
             setErrorCity("Please enter city name")
         }
-        
+
         if (address == "")
         {
             t = 1;
             setErrorAddress("Please enter Address")
         }
-       
+
         if (t==0){
             localStorage.setItem('address', address)
             localStorage.setItem('city', city)
             localStorage.setItem('country', country)
             history.push("/PlaceOrders");
         }
-        
     };
 
     return (
@@ -62,7 +61,7 @@ const Checkout = () => {
                     <Form onSubmit={submitHandler}>
                         <Form.Group controlId='address'>
                             <Form.Label>Address</Form.Label>
-                            <Form.Control  type='text' placeholder='Enter Address'
+                            <Form.Control type='text' placeholder='Enter Address'
                                 value={address}
                                 onChange={(e) =>{ setAddress(e.target.value) 
                                     setErrorAddress("") }} 
@@ -76,10 +75,9 @@ const Checkout = () => {
                             <Form.Control type='text' placeholder='Enter City'
                                 value={city}
                                 onChange={(e) => {setCity(e.target.value)
-                                 setErrorCity("")} } 
-                                style={{width:"35%", alignContent:"center", marginLeft:"550px"}}
-                                >
-                               
+                                    setErrorCity("")} } 
+                                   style={{width:"35%", alignContent:"center", marginLeft:"550px"}}
+                                   >   
                             </Form.Control>
                             <span style={{color:"red", marginRight:"380px"}}>{errorcity}</span>
                         </Form.Group>
@@ -90,8 +88,7 @@ const Checkout = () => {
                                 onChange={(e) =>{ setCountry(e.target.value)
                                 setErrorCountry("")
                                 }}
-                                style={{width:"35%", alignContent:"center", marginLeft:"550px"}}
-                               
+                              style={{width:"35%", alignContent:"center", marginLeft:"550px"}}
                                  >
                             </Form.Control>
                             <span style={{color:"red", marginRight:"380px"}}>{errorCountry}</span>

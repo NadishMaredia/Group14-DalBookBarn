@@ -33,6 +33,7 @@ route.put('/order/:id',orderController.find)
 route.put('/orderes/:id',orderController.update)
 
 route.post('/order/add', bookOrderController.addOrder);
+route.get('/past_orders', bookOrderController.getOrder);
 
 
 module.exports = route
